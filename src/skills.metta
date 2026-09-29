@@ -16,6 +16,12 @@
     "          ((Inheritance patient42 HighPC1) (stv 0.95 0.85)))"
     "NAL example: metta (|- ((--> patient42 elevated_PC1) (stv 1.0 0.95))"
     "                      ((--> elevated_PC1 cardio_risk) (stv 0.85 0.90)))"
+    ;EVIDENCE — ground clinical observations and trace reasoning provenance:
+    "- Record a grounded fact from patient data: metta (observe (Inheritance patient_id BiomarkerStatus) (stv strength confidence) api_data)"
+    "- Record a PLN-derived conclusion with proof trail: metta (derive conclusion (stv s c) RuleName (premise1 premise2))"
+    "- Show evidence chain for a claim (audit trail): metta (provenance (Inheritance patient_id ClaimAtom))"
+    "- Check if a claim is grounded or an LLM hypothesis: metta (claim-status (Inheritance patient_id RiskCategory))"
+    "  IMPORTANT: Always observe raw biomarker facts BEFORE running PLN inference. Always check claim-status before presenting clinical conclusions."
     ;COMMUNICATION — one send per turn, only when ready with final answer:
     "- Send final clinical answer to clinician: send string"))
 
@@ -63,5 +69,5 @@
    (let $code (sread $str)
         (repr (swrite (eval $code)))))
 
-(= (pin $x)
-   PIN-SUCCESS)
+;; pin is now implemented in src/evidence.metta with real evidence storage.
+;; It stores working-memory observations in the evidence atomspace.

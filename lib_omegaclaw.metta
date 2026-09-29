@@ -17,6 +17,7 @@
 !(import! &self (library OmegaClaw-Core ./channels/slack.py))
 !(import! &self (library OmegaClaw-Core ./channels/http_channel.py))
 !(import! &self (library OmegaClaw-Core ./src/channels))
+!(import! &self (library OmegaClaw-Core ./src/evidence))
 !(import! &self (library OmegaClaw-Core ./src/skills))
 !(import! &self (library OmegaClaw-Core ./src/websearch.py))
 !(import! &self (library OmegaClaw-Core ./src/memory))

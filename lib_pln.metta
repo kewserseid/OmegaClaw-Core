@@ -45,8 +45,10 @@
 
 ;; Truth functions
 
-;Forward declaration
-(= (STV $X) (stv (/ 1.0 10.0) 0.9))
+;Forward declaration — evidence-aware override is in src/evidence.metta.
+;If no observation or derivation is found for $X, evidence.metta falls
+;back to this same default (stv 0.1 0.9).  Do NOT add a competing
+;definition here; the override in evidence.metta handles the lookup.
 
 (: Truth__c2w (-> Number Number))
 (= (Truth__c2w $c)
